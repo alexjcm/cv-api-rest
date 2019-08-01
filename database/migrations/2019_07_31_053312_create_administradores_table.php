@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateAdministradoresTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('administradores', function (Blueprint $table) {
+            $table->increments('id'); //clave primaria cpn incremento 
+            $table->string('nombre', 50);
+            $table->string('apellido', 50);
+            $table->string('correo', 100);
+            $table->string('clave', 100);
+            $table->boolean('nivel_acceso');
+            $table->timestamps(); //Agrega columnas created_at y updated_at.
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('administradores');
+    }
+}
