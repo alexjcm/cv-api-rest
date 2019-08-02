@@ -6,13 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Administrador extends Model
 {
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
+    //La tabla asociada al modelo.
     protected $table = 'administradores';
     protected $primaryKey = 'id';
-    protected $fillable = ['nombre', 'apellido', 'correo', 'nivel_acceso']; //lista blanca de atributos
+    //Los atributos que son asignables, lista blanca de atributos.
+    protected $fillable = ['nombre', 'apellido', 'correo', 'nivel_acceso'];
+    //Los atributos que deberían estar ocultos para los arrays.
     protected $hidden = ['clave'];
+
+    //Relacion con otro modelo.
+    public function veterinarios()
+    {
+        return $this->hasMany('App\Models\Veterinario');
+    }
 }

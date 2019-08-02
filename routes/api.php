@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\AdministradorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //Agregamos la ruta al controlador de Administrador, 
 //resource abarca GET, POST, DELETE, PUT...
+//el link será api/administradores
 Route::resource('administradores', 'AdministradorController');
+
+Route::resource('veterinarios', 'VeterinarioController');
