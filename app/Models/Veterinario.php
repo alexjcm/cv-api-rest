@@ -14,6 +14,7 @@ class Veterinario extends Model
     ];
     protected $hidden = ['clave'];
 
+    //Relacion con otro modelo.
     public function administrador()
     {
         return $this->belongsTo('App\Models\Administrador');

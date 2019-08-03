@@ -15,7 +15,7 @@ class CreateAdministradoresTable extends Migration
             $table->string('apellido', 50)->nullable();
             $table->string('correo', 100)->unique();
             $table->string('clave', 100);
-            $table->boolean('nivel_acceso');
+            $table->boolean('nivel_acceso')->default(1); //va 1 porque SI es el administrador
             $table->timestamps(); //Agrega columnas created_at y updated_at
         });
     }

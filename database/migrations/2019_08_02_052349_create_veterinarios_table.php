@@ -18,8 +18,8 @@ class CreateVeterinariosTable extends Migration
             $table->string('cedula')->unique();
             $table->string('telefono')->nullable();
             $table->string('direccion')->nullable();
-            $table->boolean('estado');
-            $table->boolean('nivel_acceso');
+            $table->boolean('estado')->default(1); //1 significa activo
+            $table->boolean('nivel_acceso')->default(0); //Va 0 porque NO es administrador
             $table->timestamps();
         });
     }

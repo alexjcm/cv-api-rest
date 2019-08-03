@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Administrador;
+use App\Models\Cliente;
 
-class AdministradorController extends Controller
+class ClienteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,29 +28,30 @@ class AdministradorController extends Controller
     }
 
     /**
-     * Almacena un recurso recién creado en un almacén
+     * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $admin = new Administrador;
+        $cliente = new Cliente();
 
         //Declaramos el nombre con el nombre enviado en el request desde Postman
-        $admin->nombre = $request->nombre;
-        $admin->correo = $request->correo;
-        $admin->clave = $request->clave;
+        $cliente->nombre = $request->nombre;
+        $cliente->correo = $request->correo;
+        $cliente->cedula = $request->cedula;
+        $cliente->telefono = $request->telefono;
 
-        if (($request->apellido) != null) {
-            $admin->apellido = $request->apellido;
+        if (($request->direccion) != null) {
+            $cliente->direccion = $request->direccion;
         }
-        if (($request->nivel_acceso) != null) {
-            $admin->nivel_acceso = $request->nivel_acceso;
+        if (($request->apellido) != null) {
+            $cliente->apellido = $request->apellido;
         }
 
         //Guardamos el cambio en nuestro modelo
-        $admin->save();
+        $cliente->save();
     }
 
     /**
@@ -61,8 +62,7 @@ class AdministradorController extends Controller
      */
     public function show($id)
     {
-        //Solicitamos al modelo el Adminimistrador con el id solicitado por GET.
-        return Administrador::where('id', $id)->get();
+        //
     }
 
     /**

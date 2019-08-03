@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Administrador;
+use App\Models\Animal;
+use App\Models\Cliente;
 
-class AdministradorController extends Controller
+class AnimalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,29 +29,37 @@ class AdministradorController extends Controller
     }
 
     /**
-     * Almacena un recurso recién creado en un almacén
+     * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $admin = new Administrador;
+        $animal = new Animal();
 
-        //Declaramos el nombre con el nombre enviado en el request desde Postman
-        $admin->nombre = $request->nombre;
-        $admin->correo = $request->correo;
-        $admin->clave = $request->clave;
+        $animal->nombre = $request->nombre;
+        $animal->raza = $request->raza;
+        $animal->sexo = $request->sexo;
 
-        if (($request->apellido) != null) {
-            $admin->apellido = $request->apellido;
+        $cliente = new Cliente();
+        $animal->cliente_id = $request->cliente_id; //Clave foranea
+
+        //Campos opcionales
+        if (($request->color) != null) {
+            $animal->color = $request->color;
         }
-        if (($request->nivel_acceso) != null) {
-            $admin->nivel_acceso = $request->nivel_acceso;
+        if (($request->especie) != null) {
+            $animal->especie = $request->especie;
+        }
+        if (($request->fecha_nacimiento) != null) {
+            $animal->fecha_nacimiento = $request->fecha_nacimiento;
+        }
+        if (($request->edad) != null) {
+            $animal->edad = $request->edad;
         }
 
-        //Guardamos el cambio en nuestro modelo
-        $admin->save();
+        $animal->save();
     }
 
     /**
@@ -61,8 +70,7 @@ class AdministradorController extends Controller
      */
     public function show($id)
     {
-        //Solicitamos al modelo el Adminimistrador con el id solicitado por GET.
-        return Administrador::where('id', $id)->get();
+        //
     }
 
     /**

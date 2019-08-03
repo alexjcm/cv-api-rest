@@ -23,12 +23,15 @@ class CreateConsultasTable extends Migration
             $table->string('estado_reproductivo');
             $table->string('sintomas');
             $table->string('presunto_diagnostico');
-            $table->boolean('solicitud_examen');
-            $table->string('tipo_examen');
-            $table->boolean('hospitalizacion');
-            $table->integer('historia_id');
-            $table->integer('cita_id');
+            $table->boolean('solicitud_examen')->default(0);
+            $table->string('tipo_examen')->nullable();
+            $table->boolean('hospitalizacion')->default(0);
+            $table->integer('historia_id')->unsigned();
+            $table->integer('cita_id')->unsigned();
             $table->timestamps();
+            //claves foraneas
+            $table->foreign('historia_id')->references('id')->on('historias');
+            $table->foreign('cita_id')->references('id')->on('citas');
         });
     }
 

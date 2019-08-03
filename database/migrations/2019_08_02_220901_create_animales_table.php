@@ -22,8 +22,19 @@ class CreateAnimalesTable extends Migration
             $table->timestamp('fecha_nacimiento')->nullable();
             $table->integer('edad')->nullable();
             $table->tinyInteger('sexo');
-            $table->integer('cliente_id');
+            $table->integer('cliente_id')->unsigned();
             $table->timestamps();
+            //clave foranea
+            $table->foreign('cliente_id')->references('id')->on('clientes');
+            /**
+             * Eliminación en cascada ->onDelete('cascade').- 
+             * Cuando se elimina un registro de la tabla padre automáticamente 
+             * se eliminan todos los registros que coincidan en la clave foránea
+             * de la tabla relacionada.
+             * 
+             * Actualizacion en cascada ->onUpdate('cascade').- 
+             * funciona de manera similar al anterior.
+             */
         });
     }
 

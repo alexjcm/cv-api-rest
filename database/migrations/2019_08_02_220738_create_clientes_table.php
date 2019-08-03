@@ -20,7 +20,7 @@ class CreateClientesTable extends Migration
             $table->string('cedula')->unique();
             $table->string('telefono');
             $table->string('direccion')->nullable();
-            $table->string('correo');
+            $table->string('correo')->nullable();
             $table->timestamps();
         });
     }

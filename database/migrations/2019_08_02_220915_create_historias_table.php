@@ -16,8 +16,10 @@ class CreateHistoriasTable extends Migration
         Schema::create('historias', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamp('fecha_creacion');
-            $table->integer('animal_id');
+            $table->integer('animal_id')->unsigned();
             $table->timestamps();
+            //clave foranea
+            $table->foreign('animal_id')->references('id')->on('animales');
         });
     }
 
