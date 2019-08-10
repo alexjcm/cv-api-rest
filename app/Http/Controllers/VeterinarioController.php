@@ -78,7 +78,16 @@ class VeterinarioController extends Controller
      */
     public function show($id)
     {
-        return Veterinario::where('id', $id)->get();
+        $veterinario = Veterinario::where('id', $id)->first();
+
+        if($veterinario){
+            return $veterinario;
+        }
+        else{
+            return response()->json(["mensaje" => "No se encontraron datos en Veterinario","siglas"=>"NDE"], 203);
+        }
+  
+        //return Veterinario::where('id', $id)->get();
     }
 
     /**
@@ -87,9 +96,25 @@ class VeterinarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function darBaja($id)
     {
-        
+        $veterinario = Veterinario::where('id', $id)->first();
+
+        if($veterinario){
+            try {
+                
+                $veterinario->estado= 0;
+                $veterinario->save();        
+               
+                return response()->json(["mensaje" => "Operacion existosa al dar de baja al Veterinario", "siglas" => "OE"], 200)->header('Access-Control-Allow-Origin', '*');
+            
+            } catch (\Exception $exc) {                
+                return response()->json(["mensaje" => "try catch.  Error: " . $exc, "siglas" => "FD"], 400);
+            }
+        }
+        else{
+            return response()->json(["mensaje" => "No se encontraron datos en Veterinario","siglas"=>"NDE"], 203);       
+        }
     }
 
     /**
@@ -101,14 +126,13 @@ class VeterinarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $userObjeto = Veterinario::where('id',$id)->first(); //obtnemos el objeto(en un arreglo asociado)
+        $veterinario = Veterinario::where('id',$id)->first(); //obtnemos el objeto(en un arreglo asociado)
         
-        if ($userObjeto) {
+        if ($veterinario) {
             if ($request->isJson()) {
                 
                 $data = $request->json()->all();//lo convierte al arreglo a formato json
-                $veterinario = Veterinario::find($userObjeto->id);
-                
+                               
                 if (isset($data['nombre']))                    
                     $veterinario->nombre = $data['nombre'];
 
