@@ -28,4 +28,4 @@ Route::resource('clientes', 'ClienteController');
 
 Route::resource('animales', 'AnimalController');
 
-Route::put('veterinarios/modificar/{id} ' , 'VeterinarioController@edit');
+//Route::put('veterinarios/modificar/{id} ' , 'VeterinarioController@edit');

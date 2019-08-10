@@ -18,4 +18,14 @@ class Animal extends Model
     {
         return $this->belongsTo('App\Models\Cliente');
     }
+
+    public function citas()
+    {
+        return $this->hasMany('App\Models\Cita');
+    }
+
+    public function historia()
+    {
+        return $this->belongsTo('App\Models\Historia');
+    }
 }

@@ -19,4 +19,10 @@ class Veterinario extends Model
     {
         return $this->belongsTo('App\Models\Administrador');
     }
+
+    public function consultas()
+    {
+        return $this->hasMany('App\Models\Consulta');
+    }
+
 }
