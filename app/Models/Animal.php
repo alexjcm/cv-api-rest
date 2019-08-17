@@ -13,9 +13,10 @@ class Animal extends Model
         'fecha_nacimiento',  'edad', 'sexo'
     ];
 
-    //Relacion con otro modelo.
+    //Relaciones con otros modelos.
     public function cliente()
     {
+        //pertenece a
         return $this->belongsTo('App\Models\Cliente');
     }
 
@@ -26,6 +27,6 @@ class Animal extends Model
 
     public function historia()
     {
-        return $this->belongsTo('App\Models\Historia');
+        return $this->hasOne('App\Models\Historia');
     }
 }

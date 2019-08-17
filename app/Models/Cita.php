@@ -12,7 +12,7 @@ class Cita extends Model
         'fecha_cita', 'hora', 'observaciones'
     ];
 
-    //Relacion con otro modelo.
+    //Relaciones con otro modelos.
     public function consulta()
     {
         return $this->belongsTo('App\Models\Consulta');
@@ -21,5 +21,10 @@ class Cita extends Model
     public function animal()
     {
         return $this->belongsTo('App\Models\Animal');
+    }
+
+    public function veterianrio()
+    {
+        return $this->belongsTo('App\Models\Veterinario');
     }
 }

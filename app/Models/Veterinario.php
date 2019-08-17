@@ -17,12 +17,13 @@ class Veterinario extends Model
     //Relacion con otro modelo.
     public function administrador()
     {
+        //perteneca a
         return $this->belongsTo('App\Models\Administrador');
     }
 
     public function consultas()
     {
+        //tiene muchas
         return $this->hasMany('App\Models\Consulta');
     }
-
 }

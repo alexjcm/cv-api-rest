@@ -24,7 +24,9 @@ class CreateAnimalesTable extends Migration
             $table->tinyInteger('sexo');
             $table->integer('cliente_id')->unsigned();
             $table->timestamps();
+
             //clave foranea
+            //animales tiene la llave foranea cliente_id
             $table->foreign('cliente_id')->references('id')->on('clientes');
             /**
              * Eliminación en cascada ->onDelete('cascade').- 

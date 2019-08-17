@@ -29,6 +29,7 @@ class CreateConsultasTable extends Migration
             $table->integer('historia_id')->unsigned();
             $table->integer('cita_id')->unsigned();
             $table->timestamps();
+
             //claves foraneas
             $table->foreign('historia_id')->references('id')->on('historias');
             $table->foreign('cita_id')->references('id')->on('citas');

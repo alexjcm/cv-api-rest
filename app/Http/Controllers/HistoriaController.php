@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Animal;
-use App\Models\Cliente;
 
-class AnimalController extends Controller
+class HistoriaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,31 +34,7 @@ class AnimalController extends Controller
      */
     public function store(Request $request)
     {
-        $animal = new Animal();
-
-        //campos obligatorios
-        $animal->nombre = $request->nombre;
-        $animal->raza = $request->raza;
-        $animal->sexo = $request->sexo;
-
-        $cliente = new Cliente();
-        $animal->cliente_id = $request->cliente_id; //Clave foranea
-
-        //Campos opcionales
-        if (($request->color) != null) {
-            $animal->color = $request->color;
-        }
-        if (($request->especie) != null) {
-            $animal->especie = $request->especie;
-        }
-        if (($request->fecha_nacimiento) != null) {
-            $animal->fecha_nacimiento = $request->fecha_nacimiento;
-        }
-        if (($request->edad) != null) {
-            $animal->edad = $request->edad;
-        }
-
-        $animal->save();
+        //
     }
 
     /**
@@ -70,7 +44,9 @@ class AnimalController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    { }
+    {
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.

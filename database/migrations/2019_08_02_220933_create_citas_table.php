@@ -21,6 +21,7 @@ class CreateCitasTable extends Migration
             $table->integer('animal_id')->unsigned();
             $table->integer('veterinario_id')->unsigned();
             $table->timestamps();
+
             //claves foraneas
             $table->foreign('animal_id')->references('id')->on('animales');
             $table->foreign('veterinario_id')->references('id')->on('veterinarios');

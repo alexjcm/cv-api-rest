@@ -18,7 +18,9 @@ class CreateHistoriasTable extends Migration
             $table->timestamp('fecha_creacion');
             $table->integer('animal_id')->unsigned();
             $table->timestamps();
+
             //clave foranea
+            //hisotiras tiene la llave foranea animal_id
             $table->foreign('animal_id')->references('id')->on('animales');
         });
     }

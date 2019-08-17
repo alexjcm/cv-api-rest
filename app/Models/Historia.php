@@ -9,11 +9,13 @@ class Historia extends Model
     protected $table = 'historias';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'fecha_creacion'];
+        'fecha_creacion'
+    ];
 
     //Relacion con otro modelo.
     public function animal()
     {
+        //pertenece a
         return $this->belongsTo('App\Models\Animal');
     }
 
@@ -21,6 +23,4 @@ class Historia extends Model
     {
         return $this->hasMany('App\Models\Consulta');
     }
-
-
 }
